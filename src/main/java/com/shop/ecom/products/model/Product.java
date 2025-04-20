@@ -1,7 +1,9 @@
-package com.shop.ecom.products;
+package com.shop.ecom.products.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
@@ -11,9 +13,9 @@ import jakarta.persistence.Table;
 public class Product {
     @Id
     @SequenceGenerator(name = "product_sequence", sequenceName = "product_sequence", allocationSize = 1)
-    @GeneratedValue(generator = "product_sequence", strategy = jakarta.persistence.GenerationType.SEQUENCE)
-
+    @GeneratedValue(generator = "product_sequence", strategy = GenerationType.SEQUENCE)
     private Long id;
+    @Column(unique = true)
     private String name;
     private String description;
     private Double price;

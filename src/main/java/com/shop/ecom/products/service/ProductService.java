@@ -1,7 +1,10 @@
-package com.shop.ecom.products;
+package com.shop.ecom.products.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.shop.ecom.products.model.Product;
+import com.shop.ecom.products.repository.ProductRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -46,7 +49,8 @@ public class ProductService {
     public void updateProduct(Long productId, Product product) {
         // Validate if product exists
         Product productToUpdate = productRepository.findById(productId)
-                .orElseThrow(() -> new IllegalStateException("Product with id " + productId + " does not exist"));
+                .orElseThrow(() -> new IllegalStateException("Product with id " + productId +
+                        " does not exist"));
 
         // update the product
         // if the new values are not null and not equal to the old
